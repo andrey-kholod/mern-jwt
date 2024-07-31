@@ -3,6 +3,7 @@ import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 import { userRouter } from './routes/user.route'
 import { authRouter } from './routes/auth.route'
+import { errorMiddleware } from './middlewares/error.middleware'
 
 dotenv.config()
 
@@ -15,6 +16,8 @@ const PORT = process.env.PORT || 3000
 
 app.use('/api/user', userRouter)
 app.use('/api/auth', authRouter)
+
+app.use(errorMiddleware)
 
 mongoose.connect(process.env.MONGO_URI!)
     .then(() => {
