@@ -7,23 +7,34 @@ import About from './pages/About'
 import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
 import Profile from './pages/Profile'
+import RootLayout from './layouts/RootLayout'
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Home />
-  },
-  {
-    path: '/about',
-    element: <About />
-  },
-  {
-    path: '/sign-in',
-    element: <SignUp />
-  },
-  {
-    path: '/profile',
-    element: <Profile />
+    element: <RootLayout />,
+    children: [
+      {
+        path: '/',
+        element: <Home />
+      },
+      {
+        path: '/about',
+        element: <About />
+      },
+      {
+        path: '/sign-in',
+        element: <SignIn />
+      },
+      {
+        path: '/sign-up',
+        element: <SignUp />
+      },
+      {
+        path: '/profile',
+        element: <Profile />
+      }
+    ]
   }
 ])
 
